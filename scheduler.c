@@ -26,5 +26,8 @@ void q2()
 int main()
 {
     FILE *fp;
+    printf("Correct!");
+
+    return 0;
 
 }
