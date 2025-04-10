@@ -175,6 +175,7 @@ int main()
 
     while (1)
     {
+        int control = 1;
         // cpu clock time과 arrival time이 같으면 q0으로 들어감
         for (int i = 0; i < num_process; i++)
         {
@@ -183,6 +184,10 @@ int main()
                 process[i].current_q = 0;
                 process[i].used_time = 0;
                 q0[q0_size++] = &process[i];
+            }
+            if (process[i].remain_time > 0)
+            {
+                control = 0;
             }
         }
         // q0부터 q1, q2 순서로 실행
@@ -195,6 +200,7 @@ int main()
         {
             clock_time++;
         }
+        if (control) break;
     }
 
     // 출력
