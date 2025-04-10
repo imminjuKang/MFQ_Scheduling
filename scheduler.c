@@ -246,7 +246,7 @@ int main()
     int avg_wt = 0;
 
     // 각 프로세스별 TT, WT
-    printf("  PID     TT     WT\n");
+    printf("  PID   TT   WT\n");
     printf("=======================\n");
     for (int i = 0; i < num_process; i++)
     {
