@@ -217,7 +217,7 @@ int main()
 
     // 출력
     // Gantt Chart
-    printf("Gantt Chart\n");
+    printf("Gantt Chart\n|");
     // PID 출력
     int prev = -1;
     for (int i = 0; i < clock_time; i++)
@@ -236,17 +236,17 @@ int main()
     {
         if (gantt_chart[i] != prev)
         {
-            printf("%3d", i);
+            printf("%-3d", i);
             prev = gantt_chart[i];
         }
     }
-    printf("%3d\n", clock_time);
+    printf("%d\n", clock_time);
 
     int avg_tt = 0;
     int avg_wt = 0;
 
     // 각 프로세스별 TT, WT
-    printf("PID        TT        WT\n");
+    printf("  PID      TT      WT\n");
     printf("=======================\n");
     for (int i = 0; i < num_process; i++)
     {
@@ -254,7 +254,7 @@ int main()
         process[i].waiting_time = process[i].turnaround_time - process[i].burst_time;
         avg_tt += process[i].turnaround_time;
         avg_wt += process[i].waiting_time;
-        printf("%7d %7d %7d\n", process[i].pid, process[i].turnaround_time, process[i].waiting_time);
+        printf("%3d %3d %3d\n", process[i].pid, process[i].turnaround_time, process[i].waiting_time);
     }
 
     avg_tt /= num_process;
