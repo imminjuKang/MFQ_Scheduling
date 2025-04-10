@@ -246,7 +246,7 @@ int main()
     double avg_wt = 0;
 
     // 각 프로세스별 TT, WT
-    printf("\n PID   TT   WT\n");
+    printf("\n PID   TT     WT\n");
     printf("==================\n");
     for (int i = 0; i < num_process; i++)
     {
@@ -258,6 +258,6 @@ int main()
     }
 
     // 평균 TT, WT
-    printf("Avergae TT: %.1f\n", avg_tt / num_process);
+    printf("\nAvergae TT: %.1f\n", avg_tt / num_process);
     printf("Average WT: %.1f", avg_wt / num_process);
 }
