@@ -19,7 +19,6 @@ typedef struct Process
 
 void queue0(Process** q0, int* q0_size, Process** q1, int* q1_size, int* clock_time, int* gantt_chart)
 {
-    printf("Loading q0...");
     if (q0[0]->used_time < TIME_QUANTUM0 && q0[0]->remain_time > 0)
     {
         gantt_chart[*clock_time] = q0[0]->pid;
@@ -57,7 +56,6 @@ void queue0(Process** q0, int* q0_size, Process** q1, int* q1_size, int* clock_t
 
 void queue1(Process** q1, int* q1_size, Process** q2, int* q2_size, int* clock_time, int* gantt_chart)
 {
-    printf("Loading q1...");
     if (q1[0]->used_time < TIME_QUANTUM1 && q1[0]->remain_time > 0)
     {
         gantt_chart[*clock_time] = q1[0]->pid;
@@ -90,7 +88,6 @@ void queue1(Process** q1, int* q1_size, Process** q2, int* q2_size, int* clock_t
 
 void queue2(Process** q2, int* q2_size, int* clock_time, int* gantt_chart)
 {
-    printf("Loading q2...");
     Process* temp;
     int time = 0;
 
