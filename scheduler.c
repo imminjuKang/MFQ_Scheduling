@@ -160,6 +160,8 @@ int main()
 
     fclose(fp);
 
+    printf("Number of process: %d", num_process);
+    
     // 남은 시간을 burst_time으로 초기화하기
     for (int i = 0; i < num_process; i++)
     {
