@@ -173,10 +173,9 @@ int main()
     int gantt_chart[MAX_LENGTH];
 
     // queue size 관리
-    //-1이면 q가 비었다는 뜻
-    int q0_size = -1;
-    int q1_size = -1;
-    int q2_size = -1;
+    int q0_size = 0;
+    int q1_size = 0;
+    int q2_size = 0;
 
     // 원활한 관리를 위해 1초 단위로 관리
     while (1)
@@ -194,17 +193,17 @@ int main()
 
         // q0부터 q1, q2 순서로 실행
         // q0이 비어 있지 않으면, q0부터 cpu 할당
-        if (q0_size >= 0)
+        if (q0_size > 0)
         {
             queue0(q0, &q0_size, q1, &q1_size, &clock_time, gantt_chart);
         }
         // q0이 비어 있으면 q1 확인 후 cpu 할당
-        else if (q1_size >= 0)
+        else if (q1_size > 0)
         {
             queue1(q1, &q1_size, q2, &q2_size, &clock_time, gantt_chart);
         }
         // q1도 비어 있으면 q2 확인 후 cpu 할당
-        else if (q2_size >= 0)
+        else if (q2_size > 0)
         {
             queue2(q2, &q2_size, &clock_time, gantt_chart);
         }
