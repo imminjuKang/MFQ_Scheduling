@@ -10,8 +10,6 @@ typedef struct Process
     int burst_time;
     int remain_time;
     int finish_time;
-    int waiting_time;
-    int turnaround_time;
     int current_q;
     int used_time;
 
@@ -217,18 +215,18 @@ int main()
 
     // 출력
     // Gantt Chart
-    printf("Gantt Chart\n|");
+    printf("Gantt Chart\n");
     // PID 출력
     int prev = -1;
     for (int i = 0; i < clock_time; i++)
     {
         if (gantt_chart[i] != prev)
         {
-            printf("P%d |", gantt_chart[i]);
+            printf("|P%-2d", gantt_chart[i]);
             prev = gantt_chart[i];
         }
     }
-    printf("\n");
+    printf("|\n");
 
     // 실행시간 출력
     prev = -1;
@@ -242,25 +240,24 @@ int main()
     }
     printf("%d\n", clock_time);
 
-    int avg_tt = 0;
-    int avg_wt = 0;
+    int turnaround_time = 0;
+    int waiting_time = 0;
+    double avg_tt = 0;
+    double avg_wt = 0;
 
     // 각 프로세스별 TT, WT
-    printf("  PID   TT   WT\n");
+    printf("\n  PID   TT   WT\n");
     printf("=======================\n");
     for (int i = 0; i < num_process; i++)
     {
-        process[i].turnaround_time = process[i].finish_time - process[i].arrival_time;
-        process[i].waiting_time = process[i].turnaround_time - process[i].burst_time;
-        avg_tt += process[i].turnaround_time;
-        avg_wt += process[i].waiting_time;
-        printf("%3d %4d %4d\n", process[i].pid, process[i].turnaround_time, process[i].waiting_time);
+        turnaround_time = process[i].finish_time - process[i].arrival_time;
+        waiting_time = turnaround_time - process[i].burst_time;
+        avg_tt += turnaround_time;
+        avg_wt += waiting_time;
+        printf("%3d %4d %4d\n", process[i].pid, turnaround_time, waiting_time);
     }
 
-    avg_tt /= num_process;
-    avg_wt /= num_process;
-
     // 평균 TT, WT
-    printf("Avergae TT: %d\n", avg_tt);
-    printf("Average WT: %d", avg_wt);
+    printf("Avergae TT: %.1f\n", avg_tt / num_process);
+    printf("Average WT: %.1f", avg_wt / num_process);
 }
