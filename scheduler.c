@@ -40,11 +40,11 @@ void queue0(Process** q0, int* q0_size, Process** q1, int* q1_size, int* clock_t
         {
             q0[0]->current_q = 1;
             q0[0]->used_time = 0;
-            q1[*q1_size++] = &q0[0];
+            q1[*q1_size++] = q0[0];
         }
 
         // 원활한 관리를 위해 한 칸씩 앞으로 옮기기
-        for (int i = 1; i <= *q0_size; i++)
+        for (int i = 1; i < *q0_size; i++)
         {
             q0[i - 1] = q0[i];
         }
@@ -74,10 +74,10 @@ void queue1(Process** q1, int* q1_size, Process** q2, int* q2_size, int* clock_t
         {
             q1[0]->current_q = 2;
             q1[0]->used_time = 0;
-            q2[*q2_size++] = &q1[0];
+            q2[*q2_size++] = q1[0];
         }
 
-        for (int i = 1; i <= *q1_size; i++)
+        for (int i = 1; i < *q1_size; i++)
         {
             q1[i - 1] = q1[i];
         }
