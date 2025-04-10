@@ -163,6 +163,7 @@ int main()
     for (int i = 0; i < num_process; i++)
     {
         process[i].remain_time = process[i].burst_time;
+        process[i].finish_time = 0;
     }
 
     // main 함수에서는 cpu를 구현
