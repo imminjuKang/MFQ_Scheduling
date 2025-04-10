@@ -246,15 +246,15 @@ int main()
     double avg_wt = 0;
 
     // 각 프로세스별 TT, WT
-    printf("\n  PID   TT   WT\n");
-    printf("=======================\n");
+    printf("\n PID   TT   WT\n");
+    printf("==================\n");
     for (int i = 0; i < num_process; i++)
     {
         turnaround_time = process[i].finish_time - process[i].arrival_time;
         waiting_time = turnaround_time - process[i].burst_time;
         avg_tt += turnaround_time;
         avg_wt += waiting_time;
-        printf("%3d %4d %4d\n", process[i].pid, turnaround_time, waiting_time);
+        printf("%3d %5d %6d\n", process[i].pid, turnaround_time, waiting_time);
     }
 
     // 평균 TT, WT
