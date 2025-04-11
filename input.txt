@@ -1,3 +1,7 @@
-Number of Processes: 2
-1, 0, 9
-2, 3, 10
+Number of Processes: 6
+1, 0, 4
+2, 1, 10
+3, 2, 1
+4, 6, 4
+5, 8, 9
+6, 12, 6
