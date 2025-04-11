@@ -19,47 +19,51 @@ typedef struct Queue
     int front;
     int rear;
     int size;
-    Process* process_info[MAX_LENGTH];
+    Process *process_info[MAX_LENGTH];
 
 } Queue;
 
-void enqueue(Queue* q, Process* p)
+void enqueue(Queue *q, Process *p)
 {
     q->process_info[q->rear] = p;
     q->rear++;
     q->size++;
 }
 
-Process* dequeue(Queue* q)
+Process *dequeue(Queue *q)
 {
-    Process* p = q->process_info[q->front];
+    Process *p = q->process_info[q->front];
     q->front++;
     q->size--;
     return p;
 }
 
-int isEmpty(Queue* q)
+int isEmpty(Queue *q)
 {
-    if (q->front == q->rear) return 1;
-    else return 0;
+    if (q->front == q->rear)
+        return 1;
+    else
+        return 0;
 }
 
-Process* spn(Queue* q)
+Process *spn(Queue *q)
 {
-    if (q->size == 0) return NULL;
+    if (q->size == 0)
+        return NULL;
 
     int min = q->front;
-    for (int i = q->front + 1; i < q->rear; i++) 
+    for (int i = q->front + 1; i < q->rear; i++)
     {
-        if (q->process_info[i]->remain_time < q->process_info[min]->remain_time) 
+        if (q->process_info[i]->remain_time < q->process_info[min]->remain_time)
         {
             min = i;
         }
     }
 
-    Process* shortest = q->process_info[min];
+    Process *shortest = q->process_info[min];
 
-    for (int i = min; i < q->rear - 1; i++) {
+    for (int i = min; i < q->rear - 1; i++)
+    {
         q->process_info[i] = q->process_info[i + 1];
     }
 
@@ -165,7 +169,7 @@ int main()
             }
             else if (!isEmpty(&q2))
             {
-                running_p = spn(&q2);  
+                running_p = spn(&q2);
                 running_p->current_q = 2;
                 time_quantum = 0;
             }
@@ -222,10 +226,6 @@ int main()
         printf("%3d %5d %6d\n", process[i].pid, turnaround_time, waiting_time);
     }
 
-    // 평균 TT, WT
-    printf("\nAvergae TT: %.1f\n", avg_tt / num_process);
-    printf("Average WT: %.1f", avg_wt / num_process);
-}
     // 평균 TT, WT
     printf("\nAvergae TT: %.1f\n", avg_tt / num_process);
     printf("Average WT: %.1f", avg_wt / num_process);
