@@ -161,18 +161,21 @@ int main()
                 running_p = dequeue(&q0);
                 running_p->current_q = 0;
                 time_quantum = 0;
+                gantt_chart[clock_time] = running_p->pid;
             }
             else if (!isEmpty(&q1))
             {
                 running_p = dequeue(&q1);
                 running_p->current_q = 1;
                 time_quantum = 0;
+                gantt_chart[clock_time] = running_p->pid;
             }
             else if (!isEmpty(&q2))
             {
                 running_p = spn(&q2);
                 running_p->current_q = 2;
                 time_quantum = 0;
+                gantt_chart[clock_time] = running_p->pid;
             }
             else
             {
