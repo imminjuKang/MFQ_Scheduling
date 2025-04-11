@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define TIME_QUANTUM0 2
 #define TIME_QUANTUM1 4
-#define MAX_LENGTH 100
+#define MAX_LENGTH 1000
 
 typedef struct Process
 {
