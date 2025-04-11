@@ -103,6 +103,7 @@ int main()
             fclose(fp);
             return 1;
         }
+        process[i].remain_time = process[i].burst_time;
     }
 
     fclose(fp);
