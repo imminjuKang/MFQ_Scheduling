@@ -227,7 +227,7 @@ int main()
         waiting_time = turnaround_time - process[i].burst_time;
         avg_tt += turnaround_time;
         avg_wt += waiting_time;
-        printf("%3d %5d %6d\n", process[i].pid, turnaround_time, waiting_time);
+        printf("P%2d %5d %6d\n", process[i].pid, turnaround_time, waiting_time);
     }
 
     // 평균 TT, WT
