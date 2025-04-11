@@ -129,7 +129,8 @@ int main()
     int gantt_chart[MAX_LENGTH] = {0};
     int clock_time = 0;
 
-    //현재 cpu에서 실행하고 있는 프로세스 저장할 변수
+    //현재 cpu에서 실행하고 있는 프로세스를 가리키는 포인터
+    //process 정보 직접 수정하기 위해 포인터로 선언
     Process *running_p = NULL;
     int time_quantum = 0;
 
